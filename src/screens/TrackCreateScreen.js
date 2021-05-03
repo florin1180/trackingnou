@@ -1,5 +1,5 @@
 import React, { useContext, useCallback } from 'react'
-import { SafeAreaView, StyleSheet, ImageBackground } from 'react-native'
+import { SafeAreaView, StyleSheet, ImageBackground,  Keyboard, TouchableWithoutFeedback } from 'react-native'
 import { withNavigationFocus } from '@react-navigation/compat';
 import { Text } from 'react-native-elements'
 import Map from '../components/Map'
@@ -10,6 +10,12 @@ import TrackForm from '../components/TrackForm'
 import Spacer from '../components/Spacer'
 import Header from '../components/Header'
 
+
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback 
+  onPress={() => Keyboard.dismiss()}> {children}
+  </TouchableWithoutFeedback>
+  );
 
 const TrackCreateScreen = ({ isFocused }) => {
   const { state: { recording }, addLocation } = useContext(LocationContext)
@@ -24,7 +30,7 @@ const TrackCreateScreen = ({ isFocused }) => {
     }}
     >
       <SafeAreaView>
-        <Text h2>Journey</Text>
+        <Text h2>  :) Account</Text>
         <Spacer>
         <Map/>
         {err ? <Text>Please enable location services</Text> : null}

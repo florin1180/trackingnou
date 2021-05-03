@@ -3,6 +3,7 @@ import { Input, Button } from 'react-native-elements'
 import Spacer from './Spacer'
 import { Context as LocationContext } from '../context/LocationContext'
 import useSaveTrack from '../hooks/useSaveTrack'
+import { View, StyleSheet } from 'react-native'
 
 const TrackForm = () => {
   const { state: {
@@ -18,7 +19,7 @@ const TrackForm = () => {
   return (
     <>
       <Spacer>
-        <Input placeholder="Enter name" onChangeText={changeName} value={name} />
+        <Input style={styles.textInput} placeholder="Enter name" onChangeText={changeName} value={name} />
       </Spacer>
       
       <Spacer>
@@ -37,5 +38,11 @@ const TrackForm = () => {
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  textInput: {
+   color: 'blue',
+  },
+ });
 
 export default TrackForm
