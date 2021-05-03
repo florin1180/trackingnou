@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Image, StyleSheet } from 'react-native';
-import { Block, Text, Button } from 'expo-ui-kit';
+import { Block, Text, Button, styles } from 'expo-ui-kit';
 
 import AccountScreen from './src/screens/AccountScreen'
 import SignInScreen from './src/screens/SignInScreen'
@@ -15,6 +15,7 @@ import LoadingScreen from './src/screens/LoadingScreen'
 import { Provider as AuthProvider, Context as AuthContext } from './src/context/AuthContext'
 import { Provider as LocationProvider } from './src/context/LocationContext'
 import { Provider as TrackProvider } from './src/context/TrackContext'
+import { ImageBackground } from 'react-native';
 
 
 const AuthStack = createStackNavigator()
