@@ -6,6 +6,8 @@ import { Context } from '../context/LocationContext'
 const Map = () => {
   const { state: { currentLocation, locations } } = useContext(Context)
 
+  console.log(currentLocation);
+
   if(!currentLocation) {
     return <ActivityIndicator size="large" color="#0000ff" />
   }
@@ -32,7 +34,9 @@ const Map = () => {
 
 const styles = StyleSheet.create({
   map: {
-    height: 300
+    height: '100%',
+    width: '100%',
+    
   }
 })
 

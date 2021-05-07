@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Image, StyleSheet } from 'react-native';
-import { Block, Text, Button, styles } from 'expo-ui-kit';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import AccountScreen from './src/screens/AccountScreen'
 import SignInScreen from './src/screens/SignInScreen'
@@ -15,35 +15,115 @@ import LoadingScreen from './src/screens/LoadingScreen'
 import { Provider as AuthProvider, Context as AuthContext } from './src/context/AuthContext'
 import { Provider as LocationProvider } from './src/context/LocationContext'
 import { Provider as TrackProvider } from './src/context/TrackContext'
-import { ImageBackground } from 'react-native';
 
 
 const AuthStack = createStackNavigator()
 
 const AuthStackScreen = () => (
   <AuthStack.Navigator screenOptions={{headerShown: false}}>
-    <AuthStack.Screen name="SignUp" component={SignUpScreen} />
     <AuthStack.Screen name="SignIn" component={SignInScreen} />
+    <AuthStack.Screen name="SignUp" component={SignUpScreen} />
   </AuthStack.Navigator>
 )
 
-const AppStack = createDrawerNavigator()
+const FirstStack = createStackNavigator()
 
-const AppStackScreen = () => (
-  <AppStack.Navigator>
-    <AppStack.Screen name="Account" component={TrackCreateScreen} />
-    <AppStack.Screen name="History" component={TrackListScreen}/>
-    <AppStack.Screen name="Logout" component={AccountScreen} />
-  </AppStack.Navigator>
+const FirstStackScreen = ({navigation}) => (
+  <FirstStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: '#009387'
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+  }}>
+    <FirstStack.Screen 
+      name="Journeys" 
+      component={TrackCreateScreen}
+      options={{
+        headerLeft: () => (
+          <Icon.Button 
+          name="ios-menu" 
+          size={25} 
+          backgroundColor="#009387"
+          onPress={() => {navigation.openDrawer()}}></Icon.Button>
+        )
+      }} 
+      />
+  </FirstStack.Navigator>
 )
+
+
 
 const TrackListStack = createStackNavigator()
 
-const TrackListScreens = () => (
-  <TrackListStack.Navigator>
-    <TrackListStack.Screen name="History" component={TrackListScreen} />
+const TrackListScreens = ({navigation}) => (
+  <TrackListStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: '#009387'
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+  }}>
+    <TrackListStack.Screen 
+    name="History" 
+    component={TrackListScreen} 
+    options={{
+      headerLeft: () => (
+        <Icon.Button 
+        name="ios-menu" 
+        size={25} 
+        backgroundColor="#009387"
+        onPress={() => {navigation.openDrawer()}}></Icon.Button>
+      )
+    }} 
+    />
     <TrackListStack.Screen name="Journey Details" component={TrackDetailScreen} />
   </TrackListStack.Navigator>
+)
+
+const AccountStack = createStackNavigator()
+
+const AccountScreens = ({navigation}) => (
+  <AccountStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: '#009387'
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+  }}>
+    <AccountStack.Screen
+    name="Account / Logout" 
+    component={AccountScreen} 
+    options={{
+      headerLeft: () => (
+        <Icon.Button 
+        name="ios-menu" 
+        size={25} 
+        backgroundColor="#009387"
+        onPress={() => {navigation.openDrawer()}}></Icon.Button>
+      )
+    }} 
+    />
+
+  </AccountStack.Navigator>
+)
+
+
+const AppStack = createDrawerNavigator()
+
+const AppStackScreen = ({navigation}) => (
+  <AppStack.Navigator
+    initialRouteName="Journeys" >
+    <AppStack.Screen name="Journey" component={FirstStackScreen} />
+    <AppStack.Screen name="History" component={TrackListScreens} />
+    <AppStack.Screen name="Account / Logout" component={AccountScreens} />
+  </AppStack.Navigator>
 )
 
 

@@ -1,42 +1,44 @@
 import React, { useEffect, useContext } from 'react'
-import { FlatList, TouchableOpacity, SafeAreaView, ImageBackground } from 'react-native'
+import { FlatList, TouchableOpacity, ImageBackground, SafeAreaView } from 'react-native'
 import { ListItem, Text } from 'react-native-elements'
 import { Context as TrackContext } from '../context/TrackContext'
+import Spacer from '../components/Spacer'
+import { View } from 'react-native'
 
-const TrackListScreen = ({ navigation }) => {
+const TrackListScreen = ({navigation}) => {
   const { state, fetchTracks } = useContext(TrackContext)
   useEffect(() => {
     const unsub = navigation.addListener('focus', () => fetchTracks())
     return unsub
   }, [navigation])
-
+  
   return (
-    <ImageBackground style={{
-      flex:1}} source={{ uri:'https://cdn.pixabay.com/photo/2020/04/24/02/15/sunrise-5084755_960_720.jpg',
-    }}
-    >
-    <SafeAreaView>
-      <Text h3>History</Text>
-      <FlatList 
+    
+    <View>
+      <Spacer/>
+      <SafeAreaView>
+      <FlatList
         data={state}
-        keyExtractor={item => item._id}
+        keyExtractor={(item) => item._id}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity 
-              onPress={() => 
-                navigation.navigate('TrackDetailScreen', { _id: item._id })
-              }
-            >
-              <ListItem chevron title={item.name} />
+            <TouchableOpacity onPress={() =>
+              navigation.navigate('Journey Details', {_id:item._id})
+            }>
+              <ListItem>
+                <ListItem.Content>
+                  <ListItem.Title>{item.name}</ListItem.Title>
+                </ListItem.Content>
+                <ListItem.Chevron />
+              </ListItem>
             </TouchableOpacity>
-          )
+          );
         }}
       />
       </SafeAreaView>
-      </ImageBackground>
+    </View>
     
   )
-  
 }
 
 export default TrackListScreen
