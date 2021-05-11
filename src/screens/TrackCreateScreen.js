@@ -15,7 +15,7 @@ import TrackListScreen from './TrackListScreen';
 
 
 
-// import TrackForm from '../components/TrackForm'
+import TrackForm from '../components/TrackForm'
 
 const TrackCreateScreen = ({ isFocused, navigation }) => {
   const { state: { recording }, addLocation } = useContext(LocationContext)
@@ -30,7 +30,7 @@ const TrackCreateScreen = ({ isFocused, navigation }) => {
         <SafeAreaView>
           <Map/>
           {err ? <Text>Please enable location services</Text> : null}
-          {/* <TrackForm /> */}
+          <TrackForm />
         </SafeAreaView>
         </TouchableWithoutFeedback>
     );

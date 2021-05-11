@@ -5,7 +5,15 @@ import { Context as LocationContext } from '../context/LocationContext'
 import useSaveTrack from '../hooks/useSaveTrack'
 import { StyleSheet, View, TextInput } from 'react-native';
 
+
+import Overlay from 'react-native-modal-overlay';
+
+
 const TrackForm = () => {
+  state = {
+    modalVisible: true,
+  }
+
   const { state: {
     name, recording, locations
   }, 
