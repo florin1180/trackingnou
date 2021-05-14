@@ -35,7 +35,8 @@ const FirstStackScreen = ({navigation}) => (
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      // alignSelf: 'center',
     }
   }}>
     <FirstStack.Screen 

@@ -9,9 +9,7 @@ import { Context as LocationContext } from '../context/LocationContext'
 
 import useLocation from '../hooks/useLocation' 
 
-import Spacer from '../components/Spacer'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import TrackListScreen from './TrackListScreen';
+
 
 
 

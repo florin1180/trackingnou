@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { StyleSheet, ActivityIndicator } from 'react-native'
+import { StyleSheet, ActivityIndicator, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import MapView, { Polyline, Circle } from 'react-native-maps'
 import { Context } from '../context/LocationContext'
 
@@ -13,6 +13,7 @@ const Map = () => {
   }
 
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <MapView 
       style={styles.map} 
       initialRegion={{
@@ -29,6 +30,7 @@ const Map = () => {
         fillColor="rgba(158, 158, 255, 0.3)"
       />
     </MapView>
+    </TouchableWithoutFeedback>
   )
 }
 

@@ -10,8 +10,7 @@ const AccountScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <View style={styles.text}>
-        <Text h3>Putem incarca doar "Email Utilizator:".</Text>
-        <Text h3>Nu avem alta informatie</Text>
+        <Text h3>Email Utilizator: test@test.com</Text>
       <Spacer>
         <Button title="Logout" onPress={signOut} />
         </Spacer>

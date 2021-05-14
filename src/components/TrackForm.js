@@ -1,18 +1,15 @@
 import React, { useContext } from 'react'
-import { Input, Button } from 'react-native-elements'
+import { Button } from 'react-native-elements'
 import Spacer from './Spacer'
 import { Context as LocationContext } from '../context/LocationContext'
 import useSaveTrack from '../hooks/useSaveTrack'
-import { StyleSheet, View, TextInput } from 'react-native';
-
-
-import Overlay from 'react-native-modal-overlay';
+import { StyleSheet, View, TextInput, KeyboardAvoidingView } from 'react-native';
 
 
 const TrackForm = () => {
-  state = {
-    modalVisible: true,
-  }
+  // state = {
+  //   modalVisible: true,
+  // }
 
   const { state: {
     name, recording, locations
@@ -25,11 +22,12 @@ const TrackForm = () => {
   const [saveTrack] = useSaveTrack()
 
   return (
-    <>
+  
+    <KeyboardAvoidingView style={ styles.button } behavior="padding">
       <Spacer>
         {/* <Input placeholder="Enter name" onChangeText={changeName} value={name} placeholderTextColor="red" /> */}
         <TextInput value={name} onChangeText={changeName}
-          style={{ textAlign: 'center', backgroundColor: 'orange', height: 40, width: "100%", borderColor: 'orange', borderWidth: 5,  marginBottom: 20, color:'white' }}
+          style={{ borderRadius: 10, textAlign: 'center', backgroundColor: 'orange', height: 40, width: "100%", borderColor: 'orange', borderWidth: 5,  marginBottom: 20, color:'white' }}
           // Adding hint in TextInput using Placeholder option.
           placeholder="Enter Journey Name Here"
           // Making the Under line Transparent.
@@ -38,13 +36,10 @@ const TrackForm = () => {
           
         />
       </Spacer>
-      
-      <Spacer>
         { recording 
           ? <Button title="Stop Journey" onPress={stopRecording} /> 
           : <Button title="New Journey" onPress={startRecording} /> 
         }
-      </Spacer>
       <Spacer>
         { 
           !recording && locations.length
@@ -52,8 +47,23 @@ const TrackForm = () => {
           : null
         }
       </Spacer>
-    </>
+      </KeyboardAvoidingView>
+  
   )
 }
+
+const styles = StyleSheet.create(
+  {
+      button:{
+        width: '100%', 
+        height: 230, 
+        // backgroundColor: '#FF9800', 
+        justifyContent: 'center', 
+        alignItems: 'center',
+        position: 'absolute',
+        bottom: 0
+      }
+   
+  });
 
 export default TrackForm

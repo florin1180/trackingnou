@@ -8,8 +8,8 @@ import Spacer from '../components/Spacer'
 const TrackDetailScreen = ({ route, navigation }) => {
   const { state }  = useContext(TrackContext)
   const _id = route.params._id
-  const track = state.find((t) => t._id === _id)
-  const initCoords = track.locations[0].coords
+  const track = state.find(t => t._id === _id)
+  const initCoords = track.locations[0].coords  
 
   return (
     <View>
@@ -21,15 +21,11 @@ const TrackDetailScreen = ({ route, navigation }) => {
           ...initCoords
         }}
       >
-        <Polyline coordinates={track.locations.map((loc) => loc.coords)} />
+        <Polyline coordinates={track.locations.map(loc => loc.coords)} />
       </MapView>
       <Text h3>Journey Name: {track.name }</Text>
       <Spacer/>
       <Text h4>Coordinates:</Text>
-      <Text h5>Latitude:</Text>
-      <Text h5>Longitude:</Text>
-      <Text h5>Miles:</Text>
-
       <Spacer/>
     </View>
   )
