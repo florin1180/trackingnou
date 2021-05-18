@@ -10,17 +10,37 @@ const TrackListScreen = ({navigation}) => {
 
   const rightSwipe = (progress, dragX) => {
     const scale = dragX.interpolate({
-      inputRange: [1, 100],
+      inputRange: [1, 270],
       outputRange: [0, -1],
     });
     return (
+      <>
       <TouchableOpacity activeOpacity={0.7}>
-      <View style={styles.deleteBox}>
-        <Animated.Text style={{ transform: [{scale: scale}]}}>Delete</Animated.Text>
-      </View>
+        <View style={styles.deleteBox}>
+          <Animated.Text style={{ transform: [{scale: scale}]}}>Delete</Animated.Text>
+        </View>
       </TouchableOpacity>
+    
+      
+      <TouchableOpacity activeOpacity={0.7}>
+        <View style={styles.editBox}>
+          <Animated.Text style={{ transform: [{scale: scale}]}}>Edit</Animated.Text>
+        </View>
+      </TouchableOpacity>
+      
+      
+      <TouchableOpacity activeOpacity={0.7}>
+        <View style={styles.viewBox}>
+          <Animated.Text style={{ transform: [{scale: scale}]}}>View</Animated.Text>
+        </View>
+      </TouchableOpacity>
+
+      </>
     )
+    
   }
+
+
 
   useEffect(() => {
     const unsub = navigation.addListener('focus', () => fetchTracks())
@@ -75,6 +95,20 @@ const styles = StyleSheet.create({
   },
   deleteBox: {
     backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 100,
+    height: '100%',
+  },
+  editBox: {
+    backgroundColor: 'green',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 100,
+    height: '100%',
+  },
+  viewBox: {
+    backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
     width: 100,
