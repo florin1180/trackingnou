@@ -7,9 +7,7 @@ import { StyleSheet, View, TextInput, KeyboardAvoidingView } from 'react-native'
 
 
 const TrackForm = () => {
-  // state = {
-  //   modalVisible: true,
-  // }
+  
 
   const { state: {
     name, recording, locations
@@ -27,12 +25,13 @@ const TrackForm = () => {
       <Spacer>
         {/* <Input placeholder="Enter name" onChangeText={changeName} value={name} placeholderTextColor="red" /> */}
         <TextInput value={name} onChangeText={changeName}
-          style={{ borderRadius: 10, textAlign: 'center', backgroundColor: 'orange', height: 40, width: "100%", borderColor: 'orange', borderWidth: 5,  marginBottom: 20, color:'white' }}
+          style={{ borderRadius: 10, textAlign: 'center', backgroundColor: '#a4c3f5', height: 40, width: "100%", borderColor: '#a4c3f5', borderWidth: 5,  marginBottom: 20, color:'white' }}
           // Adding hint in TextInput using Placeholder option.
           placeholder="Enter Journey Name Here"
           // Making the Under line Transparent.
           underlineColorAndroid="transparent"
           placeholderTextColor="white"
+          
           
         />
       </Spacer>
@@ -63,7 +62,6 @@ const styles = StyleSheet.create(
         position: 'absolute',
         bottom: 0
       }
-   
   });
 
 export default TrackForm
