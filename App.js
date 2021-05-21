@@ -16,6 +16,7 @@ import { Provider as AuthProvider, Context as AuthContext } from './src/context/
 import { Provider as LocationProvider } from './src/context/LocationContext'
 import { Provider as TrackProvider } from './src/context/TrackContext'
 
+import { DrawerContent } from './src/screens/DrawerContent'
 
 const AuthStack = createStackNavigator()
 
@@ -99,7 +100,7 @@ const AccountScreens = ({navigation}) => (
     }
   }}>
     <AccountStack.Screen
-    name="Account / Logout" 
+    name="Account" 
     component={AccountScreen} 
     options={{
       headerLeft: () => (
@@ -119,11 +120,10 @@ const AccountScreens = ({navigation}) => (
 const AppStack = createDrawerNavigator()
 
 const AppStackScreen = ({navigation}) => (
-  <AppStack.Navigator
-    initialRouteName="Journeys" >
+  <AppStack.Navigator drawerContent={props => <DrawerContent {...props}/>}>
     <AppStack.Screen name="Journey" component={FirstStackScreen} />
     <AppStack.Screen name="History" component={TrackListScreens} />
-    <AppStack.Screen name="Account / Logout" component={AccountScreens} />
+    <AppStack.Screen name="Account" component={AccountScreens} />
   </AppStack.Navigator>
 )
 

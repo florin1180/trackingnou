@@ -17,10 +17,17 @@ const CoordsInfo = ({ longitude, latitude, altitude }) => (
 const TrackDetailScreen = ({ route, navigation }) => {
   const { state }  = useContext(TrackContext)
   const _id = route.params._id
+  // const _id = navigation.params('_id');
   const track = state.find(t => t._id === _id)
   const initCoords = track.locations[0].coords
   
 
+  const SeparatorComponent = () => {
+    return <View style={styles.separatorLine}/>
+  }
+
+
+  const Coords = track.locations.map(loc => loc.coords)
 
   const renderItem = ({ item }) => (
     <CoordsInfo 
@@ -29,13 +36,6 @@ const TrackDetailScreen = ({ route, navigation }) => {
     altitude={item.altitude}  
     />
   )
-
-  const SeparatorComponent = () => {
-    return <View style={styles.separatorLine}/>
-  }
-
-
-  const Coords = track.locations.map(loc => loc.coords)
  
 
   return (
@@ -54,7 +54,7 @@ const TrackDetailScreen = ({ route, navigation }) => {
       <FlatList
           data={Coords}
           renderItem={renderItem}
-          keyExtractor={(item) => item._id}
+          keyExtractor={(item) => item._locations}
           ItemSeparatorComponent={SeparatorComponent}
         />
       </SafeAreaView>        
@@ -64,11 +64,12 @@ const TrackDetailScreen = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   map: {
-    height: '50%'
+    height: '50%',
   },
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    // marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: 'white'
   },
   item: {
     padding: 20,

@@ -4,9 +4,11 @@ import { ListItem } from 'react-native-elements'
 import { Context as TrackContext } from '../context/TrackContext'
 
 import Swipeable from 'react-native-gesture-handler/Swipeable'
+import { MaterialIcons } from '@expo/vector-icons';
 
 const TrackListScreen = ({navigation}) => {
   const { state, fetchTracks } = useContext(TrackContext)
+
 
   const rightSwipe = (progress, dragX) => {
     const scale = dragX.interpolate({
@@ -15,23 +17,29 @@ const TrackListScreen = ({navigation}) => {
     });
     return (
       <>
-      <TouchableOpacity activeOpacity={0.7}>
+      <TouchableOpacity activeOpacity={0.3}>
         <View style={styles.deleteBox}>
-          <Animated.Text style={{ transform: [{scale: scale}]}}>Delete</Animated.Text>
+          <Animated.Text style={{ transform: [{scale: scale}]}}>
+          <MaterialIcons name="delete" size={37} color="red" />
+          </Animated.Text>
         </View>
       </TouchableOpacity>
     
       
-      <TouchableOpacity activeOpacity={0.7}>
+      <TouchableOpacity activeOpacity={0.3}>
         <View style={styles.editBox}>
-          <Animated.Text style={{ transform: [{scale: scale}]}}>Edit</Animated.Text>
+          <Animated.Text style={{ transform: [{scale: scale}]}}>
+          <MaterialIcons name="edit" size={37} color="grey" />
+          </Animated.Text>
         </View>
       </TouchableOpacity>
       
       
-      <TouchableOpacity activeOpacity={0.7}>
+      <TouchableOpacity activeOpacity={0.3}>
         <View style={styles.viewBox}>
-          <Animated.Text style={{ transform: [{scale: scale}]}}>View</Animated.Text>
+          <Animated.Text style={{ transform: [{scale: scale}]}}>
+          <MaterialIcons name="preview" size={37} color="grey" />
+          </Animated.Text>
         </View>
       </TouchableOpacity>
 
@@ -39,8 +47,6 @@ const TrackListScreen = ({navigation}) => {
     )
     
   }
-
-
 
   useEffect(() => {
     const unsub = navigation.addListener('focus', () => fetchTracks())
@@ -52,11 +58,11 @@ const TrackListScreen = ({navigation}) => {
       <FlatList
         data={state}
         keyExtractor={(item) => item._id}
-        renderItem={({ item, index }) => {
+        renderItem={({ item }) => {
           return (
             <TouchableOpacity 
             onPress={() =>
-              navigation.navigate('Journey Details', {_id:item._id})
+              navigation.navigate('Journey Details', {_id: item._id})
             }>
             <Swipeable renderRightActions={rightSwipe}>
               <ListItem>
@@ -82,6 +88,7 @@ export default TrackListScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white'
   },
   separatorLine: {
     height: 1,
@@ -94,24 +101,21 @@ const styles = StyleSheet.create({
     padding: 30,
   },
   deleteBox: {
-    backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 100,
+    width: 70,
     height: '100%',
   },
   editBox: {
-    backgroundColor: 'green',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 100,
+    width: 70,
     height: '100%',
   },
   viewBox: {
-    backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 100,
+    width: 70,
     height: '100%',
   }
 });

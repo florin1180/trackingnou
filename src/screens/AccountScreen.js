@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { View, SafeAreaView, ImageBackground, StyleSheet } from 'react-native'
 import { Button, Text } from 'react-native-elements'
-import Spacer from '../components/Spacer'
+// import Spacer from '../components/Spacer'
 import { Context as AuthContext } from '../context/AuthContext'
 
 const AccountScreen = ({navigation}) => {
@@ -10,10 +10,10 @@ const AccountScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <View style={styles.text}>
-        <Text h3>Email Utilizator: test@test.com</Text>
-      <Spacer>
+        <Text h3>Utilizator: test@test.com</Text>
+      {/* <Spacer>
         <Button title="Logout" onPress={signOut} />
-        </Spacer>
+        </Spacer> */}
       </View>
     </SafeAreaView>
   )
