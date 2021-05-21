@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react'
-import { FlatList, TouchableOpacity, SafeAreaView, Text, StyleSheet, View, Animated, Touchable } from 'react-native'
+import { FlatList, TouchableOpacity, SafeAreaView, Text, StyleSheet, View, Animated } from 'react-native'
 import { ListItem } from 'react-native-elements'
 import { Context as TrackContext } from '../context/TrackContext'
+
 
 import Swipeable from 'react-native-gesture-handler/Swipeable'
 import { MaterialIcons } from '@expo/vector-icons';
@@ -9,6 +10,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 const TrackListScreen = ({navigation}) => {
   const { state, fetchTracks } = useContext(TrackContext)
 
+  
 
   const rightSwipe = (progress, dragX) => {
     const scale = dragX.interpolate({
@@ -62,7 +64,7 @@ const TrackListScreen = ({navigation}) => {
           return (
             <TouchableOpacity 
             onPress={() =>
-              navigation.navigate('Journey Details', {_id: item._id})
+              navigation.navigate('Journey Details', {_id:item._id})
             }>
             <Swipeable renderRightActions={rightSwipe}>
               <ListItem>
@@ -117,5 +119,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 70,
     height: '100%',
-  }
+  },
 });
