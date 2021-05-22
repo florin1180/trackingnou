@@ -10,7 +10,17 @@ import { MaterialIcons } from '@expo/vector-icons';
 const TrackListScreen = ({navigation}) => {
   const { state, fetchTracks } = useContext(TrackContext)
 
-  
+  viewHandle = (item) => {
+    console.log('click on view id', item)
+  }
+
+  editHandle = (item) => {
+    console.log('click on view id', item)
+  }
+
+  deleteHandle = (item) => {
+    console.log('click on view id', item)
+  }
 
   const rightSwipe = (progress, dragX) => {
     const scale = dragX.interpolate({
@@ -19,7 +29,7 @@ const TrackListScreen = ({navigation}) => {
     });
     return (
       <>
-      <TouchableOpacity activeOpacity={0.3}>
+      <TouchableOpacity activeOpacity={0.3} onItemClick={this.deleteHandle}>
         <View style={styles.deleteBox}>
           <Animated.Text style={{ transform: [{scale: scale}]}}>
           <MaterialIcons name="delete" size={37} color="red" />
@@ -28,7 +38,7 @@ const TrackListScreen = ({navigation}) => {
       </TouchableOpacity>
     
       
-      <TouchableOpacity activeOpacity={0.3}>
+      <TouchableOpacity activeOpacity={0.3} onItemClick={this.editHandle}>
         <View style={styles.editBox}>
           <Animated.Text style={{ transform: [{scale: scale}]}}>
           <MaterialIcons name="edit" size={37} color="grey" />
@@ -37,7 +47,7 @@ const TrackListScreen = ({navigation}) => {
       </TouchableOpacity>
       
       
-      <TouchableOpacity activeOpacity={0.3}>
+      <TouchableOpacity activeOpacity={0.3} onItemClick={this.viewHandle}>
         <View style={styles.viewBox}>
           <Animated.Text style={{ transform: [{scale: scale}]}}>
           <MaterialIcons name="preview" size={37} color="grey" />
