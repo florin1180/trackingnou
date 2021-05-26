@@ -3,9 +3,11 @@ import { StyleSheet } from 'react-native'
 import { Button, Text, Input } from 'react-native-elements'
 import Spacer from './Spacer'
 
+
 const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [phone, setPhone] = useState('')
 
   return (
     <>
@@ -29,6 +31,15 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
           autoCapitalize="none" 
           autoCorrect={false} 
           secureTextEntry 
+        />
+      </Spacer>
+      <Spacer>
+        <Input 
+          label="Phone" 
+          value={phone} 
+          onChangeText={setPhone} 
+          autoCapitalize="none" 
+          autoCorrect={false} 
         />
       </Spacer>
       { errorMessage ? (

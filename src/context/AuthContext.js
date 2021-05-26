@@ -32,9 +32,9 @@ const clearErrorMessage = (dispatch) => () => {
   dispatch({ type: 'clear_error_message' })
 }
 
-const signUp = (dispatch) => async ({ email, password }) => {
+const signUp = (dispatch) => async ({ email, password, phone }) => {
   try {
-    const { data } = await trackerApi.post('/signup', { email, password })
+    const { data } = await trackerApi.post('/signup', { email, password,phone })
     await AsyncStorage.setItem('token', data.token)
     
     dispatch({ type: 'sign_in', payload: data.token })

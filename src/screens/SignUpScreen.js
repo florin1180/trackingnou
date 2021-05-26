@@ -3,6 +3,8 @@ import { View, StyleSheet } from 'react-native'
 import { Context as AuthContext } from '../context/AuthContext'
 import AuthForm from '../components/AuthForm'
 import NavLink from '../components/NavLink'
+
+
 const SignUpScreen = ({ navigation }) => {
   const { state, signUp, clearErrorMessage } = useContext(AuthContext)
   
@@ -13,7 +15,7 @@ const SignUpScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <AuthForm  
-        headerText="Register / Login" 
+        headerText="Register" 
         errorMessage={state.errorMessage}
         submitButtonText="Register"
         onSubmit={signUp}
@@ -27,7 +29,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    marginBottom: 200
+    marginBottom: 130,
+    marginTop: 170
   }
 })
 

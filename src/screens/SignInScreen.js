@@ -4,6 +4,7 @@ import { Context as AuthContext } from '../context/AuthContext'
 import AuthForm from '../components/AuthForm'
 import NavLink from '../components/NavLink'
 
+
 const SignUpScreen = ({ navigation }) => {
   const { state, signIn, clearErrorMessage } = useContext(AuthContext)
   
@@ -29,8 +30,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    marginBottom: 200,
-    marginTop: 150
+    marginBottom: 130,
+    marginTop: 170
   }
 })
 
