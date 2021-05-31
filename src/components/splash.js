@@ -176,7 +176,7 @@ class SplashHelper extends Component {
                             <Circle r={height + 50} cx={width / 2} />
                         </ClipPath>
                         <Image
-                            href={require('../../assets/rsz_blue_bg')}
+                            href={require('../../assets/rsz_blue_bg.png')}
                             width={width}
                             height={height + 50}
                             preserveAspectRatio="xMidYMid slice"

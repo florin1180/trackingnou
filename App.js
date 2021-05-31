@@ -5,7 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import SplashScreen from './src/screens/SplashScreen'
+// import SplashScreen from './src/screens/SplashScreen'
 import AccountScreen from './src/screens/AccountScreen'
 import SignInScreen from './src/screens/SignInScreen'
 import SignUpScreen from './src/screens/SignUpScreen';
@@ -41,7 +41,7 @@ const FirstStackScreen = ({navigation}) => (
       // alignSelf: 'center',
     }
   }}>
-    <FirstStack.Screen name="Splash" component={SplashScreen} />
+    {/* <FirstStack.Screen name="Splash" component={SplashScreen} /> */}
     <FirstStack.Screen 
       name="Journeys" 
       component={TrackCreateScreen}

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, setState } from 'react'
 import { FlatList, TouchableOpacity, SafeAreaView, Text, StyleSheet, View, Animated } from 'react-native'
 import { ListItem } from 'react-native-elements'
 import { Context as TrackContext } from '../context/TrackContext'
@@ -9,18 +9,24 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 const TrackListScreen = ({navigation}) => {
   const { state, fetchTracks } = useContext(TrackContext)
+  
+
 
   viewHandle = (item) => {
-    console.log('click on view id', item)
+    console.log('click on view id', item._id)
   }
 
   editHandle = (item) => {
-    console.log('click on view id', item)
+    console.log('click on edit id', item._id)
   }
 
-  deleteHandle = (item) => {
-    console.log('click on view id', item)
+  deleteHandle = (_id) => {
+    const filteredData = state.data.filter(item => item._id !== _id);
+    this.setState({ data: filteredData });
   }
+
+
+    
 
   const rightSwipe = (progress, dragX) => {
     const scale = dragX.interpolate({
@@ -29,7 +35,7 @@ const TrackListScreen = ({navigation}) => {
     });
     return (
       <>
-      <TouchableOpacity activeOpacity={0.3} onItemClick={this.deleteHandle}>
+      <TouchableOpacity activeOpacity={0.3} onPress={deleteHandle}>
         <View style={styles.deleteBox}>
           <Animated.Text style={{ transform: [{scale: scale}]}}>
           <MaterialIcons name="delete" size={37} color="red" />
@@ -38,7 +44,7 @@ const TrackListScreen = ({navigation}) => {
       </TouchableOpacity>
     
       
-      <TouchableOpacity activeOpacity={0.3} onItemClick={this.editHandle}>
+      <TouchableOpacity activeOpacity={0.3} onPress={editHandle}>
         <View style={styles.editBox}>
           <Animated.Text style={{ transform: [{scale: scale}]}}>
           <MaterialIcons name="edit" size={37} color="grey" />
@@ -47,7 +53,7 @@ const TrackListScreen = ({navigation}) => {
       </TouchableOpacity>
       
       
-      <TouchableOpacity activeOpacity={0.3} onItemClick={this.viewHandle}>
+      <TouchableOpacity activeOpacity={0.3} onPress={viewHandle}>
         <View style={styles.viewBox}>
           <Animated.Text style={{ transform: [{scale: scale}]}}>
           <MaterialIcons name="preview" size={37} color="grey" />

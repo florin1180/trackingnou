@@ -35,11 +35,11 @@ export default class SplashScreen extends Component {
 
     componentDidMount(){
         const { navigate } = this.props.navigation;
-        /*
+        
         this.timeoutHandle = setTimeout(()=>{
-            navigate('Home', { k: 'v' })
+            navigate('Journey', { k: 'v' })
         }, 5000);
-        */
+        
     }
 
     goToLogin() {
@@ -61,3 +61,4 @@ export default class SplashScreen extends Component {
 }
 
 AppRegistry.registerComponent('SplashScreen');
+

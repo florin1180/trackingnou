@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import {
   Accuracy,
+  requestForegroundPermissionsAsync,
   requestBackgroundPermissionsAsync,
   watchPositionAsync
 } from 'expo-location';
@@ -13,11 +14,16 @@ export default (shouldTrack, callback) => {
     let subscriber;
     const startWatching = async () => {
       try {
-        const { granted } = await requestBackgroundPermissionsAsync();
-        if (!granted) {
-          throw new Error('Location permission not granted');
-        }
-        
+        // const { granted } = await requestBackgroundPermissionsAsync();
+        const { granted } = await requestForegroundPermissionsAsync()
+        // if (!granted) {
+        //   throw new Error('Location permission not granted');
+        // }
+        // if (granted) {
+        //   await requestBackgroundPermissionsAsync();
+        // }else {
+        //   throw new Error('Location permission not granted');
+        // }
         subscriber = await watchPositionAsync(
           {
             accuracy: Accuracy.BestForNavigation,
