@@ -36,6 +36,9 @@ export default class SplashScreen extends Component {
     componentDidMount(){
         const { navigate } = this.props.navigation;
         
+        // do stuff while splash screen is shown
+        // After having done stuff (such as async tasks) hide the splash screen
+
         this.timeoutHandle = setTimeout(()=>{
             navigate('Journey', { k: 'v' })
         }, 5000);
@@ -61,4 +64,5 @@ export default class SplashScreen extends Component {
 }
 
 AppRegistry.registerComponent('SplashScreen');
+
 

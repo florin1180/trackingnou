@@ -5,7 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-// import SplashScreen from './src/screens/SplashScreen'
+import SplashScreen from './src/screens/SplashScreen'
 import AccountScreen from './src/screens/AccountScreen'
 import SignInScreen from './src/screens/SignInScreen'
 import SignUpScreen from './src/screens/SignUpScreen';
@@ -57,8 +57,6 @@ const FirstStackScreen = ({navigation}) => (
       />
   </FirstStack.Navigator>
 )
-
-
 
 const TrackListStack = createStackNavigator()
 
@@ -138,14 +136,15 @@ const App = () => {
   }
 
   return (
-    <NavigationContainer>
-      {state.token === null ? (
-          <AuthStackScreen />
-        ) : (
-          <AppStackScreen />
-        )
-      }
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   {state.token === null ? (
+    //       <AuthStackScreen />
+    //     ) : (
+    //       <AppStackScreen />
+    //     )
+    //   }
+    // </NavigationContainer>
+    <SplashScreen/>
   )
 }
 

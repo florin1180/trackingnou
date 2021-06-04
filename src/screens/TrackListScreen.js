@@ -21,7 +21,7 @@ const TrackListScreen = ({navigation}) => {
   }
 
   deleteHandle = (_id) => {
-    const filteredData = state.data.filter(item => item._id !== _id);
+    const filteredData = this.data.state.filter(item => item._id !== _id);
     this.setState({ data: filteredData });
   }
 
